@@ -1,11 +1,11 @@
-import Layout from "../components/Layout"
+import Layout from "../components/Layout";
 
 const Main = () => {
   return (
     <Layout>
-        <div>Main</div>
+      <div>Main</div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Main
+export default Main;

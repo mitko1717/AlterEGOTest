@@ -2,11 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IArticle } from "../../models/interfaces";
 
 interface GithubState {
-//   openedArticle: IArticle | null;
+  //   openedArticle: IArticle | null;
 }
 
 const initialState: GithubState = {
-//   openedArticle: null,
+  //   openedArticle: null,
 };
 
 export const dataSlice = createSlice({

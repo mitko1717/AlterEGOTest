@@ -5,13 +5,13 @@ import Main from "./pages/Main";
 
 function App() {
   return (
-    <>
+    <div className="w-full h-screen bg-slate-300">
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/news" element={<News />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

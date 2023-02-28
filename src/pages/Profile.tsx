@@ -1,22 +1,20 @@
-import { useState } from "react";
-import { useGetDataQuery } from "../store/data/data.api";
-import { IArticle } from "../models/interfaces";
-import Layout from "../components/Layout"
+// import { useState } from "react";
+// import { useGetDataQuery } from "../store/data/data.api";
+// import { IArticle } from "../models/interfaces";
+import Layout from "../components/Layout";
 
 const Profile = () => {
-  const { isLoading, isError, data } = useGetDataQuery(51);
-  const [query, setQuery] = useState<string>("");
+//   const { isLoading, isError, data } = useGetDataQuery(51);
+//   const [query, setQuery] = useState<string>("");
 
-//   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-//     e.preventDefault();
-//     setQuery(e.target.value);
-//   };
+  //   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  //     e.preventDefault();
+  //     setQuery(e.target.value);
+  //   };
 
   return (
     <Layout>
-        <div>
-            profile
-        </div>
+      <div>profile</div>
     </Layout>
   );
 };

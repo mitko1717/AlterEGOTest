@@ -1,12 +1,26 @@
+import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+
 type Props = {
-    children: JSX.Element,
-  };
+  children: JSX.Element;
+};
 
-  const Layout = ({ children }: Props) => (
-    <div className="flex flex-col pt-10 h-screen w-screen gap-6 max-w-[1250px] mx-auto">
-      <h1>title</h1>
-      {children}
+const Layout = ({ children }: Props) => (
+  <div className="flex flex-col h-screen w-screen mx-auto">
+    <div className="w-full h-[80px] flex items-center justify-center gap-x-8">
+      <Button variant="contained">
+        <Link to="/">Main</Link>
+      </Button>
+      <Button variant="contained">
+        <Link to="/news">News</Link>
+      </Button>
+      <Button variant="contained">
+        <Link to="/profile">Profile</Link>
+      </Button>
     </div>
-  );
 
-  export default Layout
+    {children}
+  </div>
+);
+
+export default Layout;
