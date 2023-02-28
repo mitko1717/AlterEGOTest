@@ -1,21 +1,22 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IArticle } from "./../../models/interfaces";
+import { IPost } from "./../../models/interfaces";
 
 export const dataApi = createApi({
-  reducerPath: "github/api",
+  reducerPath: "posts/api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.spaceflightnewsapi.net/v3/",
+    baseUrl: "https://jsonplaceholder.typicode.com/",
   }),
   refetchOnFocus: true,
   endpoints: (build) => ({
-    getData: build.query<IArticle[], number>({
-      query: (limit: number = 100) => ({
-        url: `articles?`,
+    getData: build.query<IPost[], number>({
+      query: (limit: number = 10) => ({
+        url: `posts`,
         params: {
+          _start: 0,
           _limit: limit,
         },
       }),
-      transformResponse: (response: IArticle[]) => response,
+      transformResponse: (response: IPost[]) => response,
     }),
   }),
 });

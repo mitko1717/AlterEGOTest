@@ -1,9 +1,16 @@
+import { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
-// import { useAppSelector } from "../hooks/redux";
+import { useGetDataQuery } from "../store/data/data.api";
 
 const News = () => {
-  //   const { openedArticle } = useAppSelector((state) => state.article);
+  const [limit, setLimit] = useState<number>(10)
+  const { isLoading, isError, data } = useGetDataQuery(limit);
+
+  useEffect(() => {
+    
+  }, [])
+  
 
   return (
     <Layout>

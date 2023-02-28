@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IArticle } from "../../models/interfaces";
+import { IPost } from "../../models/interfaces";
 
 interface GithubState {
   //   openedArticle: IArticle | null;
