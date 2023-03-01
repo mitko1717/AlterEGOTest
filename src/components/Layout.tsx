@@ -7,7 +7,7 @@ type Props = {
 
 const Layout = ({ children }: Props) => (
   <div className="flex flex-col h-screen w-screen mx-auto">
-    <div className="w-full h-[80px] flex items-center justify-center gap-x-8">
+    <div className="w-full h-[80px] min-h-[80px] flex items-center justify-center gap-x-8">
       <Button variant="contained">
         <Link to="/">Main</Link>
       </Button>

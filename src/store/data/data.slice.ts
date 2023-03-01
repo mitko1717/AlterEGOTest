@@ -1,21 +1,21 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IPost } from "../../models/interfaces";
 
-interface GithubState {
-  //   openedArticle: IArticle | null;
+interface IDataState {
+  stateData: IPost[];
 }
 
-const initialState: GithubState = {
-  //   openedArticle: null,
+const initialState: IDataState = {
+  stateData: [],
 };
 
 export const dataSlice = createSlice({
   name: "data",
   initialState,
   reducers: {
-    // setArticle(state, action: PayloadAction<IArticle>) {
-    //   state.openedArticle = action.payload;
-    // },
+    setData(state, action: PayloadAction<IPost[]>) {
+      state.stateData = action.payload;
+    },
   },
 });
 

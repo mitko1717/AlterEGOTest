@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IPost } from "./../../models/interfaces";
+import { IPost, IQueries } from "./../../models/interfaces";
 
 export const dataApi = createApi({
   reducerPath: "posts/api",
@@ -8,11 +8,11 @@ export const dataApi = createApi({
   }),
   refetchOnFocus: true,
   endpoints: (build) => ({
-    getData: build.query<IPost[], number>({
-      query: (limit: number = 10) => ({
+    getData: build.query<IPost[], IQueries>({
+      query: ({limit, start}) => ({
         url: `posts`,
         params: {
-          _start: 0,
+          _start: start,
           _limit: limit,
         },
       }),

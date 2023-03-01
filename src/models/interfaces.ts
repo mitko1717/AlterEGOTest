@@ -5,7 +5,7 @@ export interface IPost {
   body: string;
 }
 
-export type TitleProps = {
-  title: string;
-  query: string;
-};
+export interface IQueries {
+  limit: number,
+  start: number
+}

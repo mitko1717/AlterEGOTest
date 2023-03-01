@@ -4,8 +4,8 @@
 import Layout from "../components/Layout";
 
 const Profile = () => {
-//   const { isLoading, isError, data } = useGetDataQuery(51);
-//   const [query, setQuery] = useState<string>("");
+  //   const { isLoading, isError, data } = useGetDataQuery(51);
+  //   const [query, setQuery] = useState<string>("");
 
   //   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
   //     e.preventDefault();
