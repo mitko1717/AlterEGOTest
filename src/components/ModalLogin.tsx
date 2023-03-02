@@ -2,6 +2,7 @@ import { Box, Modal } from "@mui/material";
 import { FC } from "react";
 import Button from "@mui/material/Button/";
 import { IModalProps } from "../models/interfaces";
+import LoginScreen from "./Login";
 
 const style = {
   position: "absolute" as "absolute",
@@ -37,7 +38,7 @@ const ModalForm: FC<IModalProps> = ({ isModalOpen, setIsModalOpen }) => {
               <span className="text-2xl font-bold text-gray-400">CLOSE</span>
             </Button>
           </span>
-          <h2 className="font-bold text-2xl"> IDEA ITEM</h2>
+          <LoginScreen />
         </Box>
       </Modal>
     </>

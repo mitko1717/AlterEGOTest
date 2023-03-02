@@ -6,7 +6,13 @@ const initialState: IDataState = {
   start: 0,
   isLoading: true,
   isAuthenticated: false,
-  user: null,
+  isLogined: false,
+  database: [
+    {
+      login: 'admin',
+      password: '12345'
+    }
+  ]
 };
 
 export const getData = createAsyncThunk(
@@ -33,6 +39,12 @@ export const dataSlice = createSlice({
     },
     setStart(state) {
       state.start += 5;
+    },
+    setIsLoginedTrue(state) {
+      state.isLogined = true
+    },
+    setIsLoginedFalse(state) {
+      state.isLogined = false
     },
   },
 

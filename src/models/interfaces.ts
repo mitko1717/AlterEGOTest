@@ -1,5 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
 
+export interface IUsersInfo {
+  login: string;
+  password: string;
+}
+
 export interface IPost {
   userId: number;
   id: number;
@@ -17,7 +22,8 @@ export interface IDataState {
   start: number;
   isLoading: boolean;
   isAuthenticated: boolean;
-  user: null;
+  isLogined: boolean;
+  database: IUsersInfo[];
 }
 
 export interface IModalProps {

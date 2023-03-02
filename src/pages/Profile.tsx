@@ -1,20 +1,29 @@
-// import { useState } from "react";
-// import { useGetDataQuery } from "../store/data/data.api";
-// import { IArticle } from "../models/interfaces";
+import Button from "@mui/material/Button/";
 import Layout from "../components/Layout";
+import { useActions } from "../hooks/actions";
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
-  //   const { isLoading, isError, data } = useGetDataQuery(51);
-  //   const [query, setQuery] = useState<string>("");
+  const { setIsLoginedFalse } = useActions();
+  const navigate = useNavigate();
 
-  //   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-  //     e.preventDefault();
-  //     setQuery(e.target.value);
-  //   };
+
+  const logoutHandler = () => {
+    setIsLoginedFalse()
+    navigate('/')
+  }
 
   return (
     <Layout>
-      <div>profile</div>
+      <div>
+      <div className="w-48 mx-auto text-center">welcome to your profile</div>
+      <div className='flex justify-center w-48 mt-4 mx-auto'>
+        <Button variant="contained" type='submit' onClick={logoutHandler}>
+            <span className="text-2xl font-bold text-gray-400">Log out</span>
+        </Button>
+      </div>
+      </div>
+
     </Layout>
   );
 };
