@@ -6,7 +6,7 @@ import { useAppSelector } from "./hooks/redux";
 
 function App() {
   const { isLogined } = useAppSelector((state) => state.data);
-  
+
   return (
     <div className="w-full h-screen bg-slate-300">
       <Routes>

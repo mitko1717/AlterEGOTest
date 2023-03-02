@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 
 const Main = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
-    navigate('/')
-  }, [])
+    navigate("/");
+  }, []);
 
   return (
     <Layout>

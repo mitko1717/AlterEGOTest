@@ -11,11 +11,11 @@ type Props = {
 const Layout = ({ children }: Props) => {
   const { isLogined } = useAppSelector((state) => state.data);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const modalOpenHandler = () => {
     if (!isLogined) setIsModalOpen(true);
-    if (isLogined) navigate('/profile')
+    if (isLogined) navigate("/profile");
   };
 
   return (
@@ -32,7 +32,9 @@ const Layout = ({ children }: Props) => {
         </Button>
       </div>
 
-      {!isLogined && <ModalForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
+      {!isLogined && (
+        <ModalForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      )}
 
       {children}
     </div>

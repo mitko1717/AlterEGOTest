@@ -3,8 +3,8 @@ import { IDataState, IPost, IQueries } from "../../models/interfaces";
 
 const isUserLogined =
   typeof window !== "undefined" && localStorage.getItem("isLogined") !== null
-    ? JSON.parse(localStorage.getItem("isLogined") || '')
-    : null;    
+    ? JSON.parse(localStorage.getItem("isLogined") || "")
+    : null;
 
 const initialState: IDataState = {
   stateData: [],
@@ -13,10 +13,10 @@ const initialState: IDataState = {
   isLogined: isUserLogined !== null ? JSON.parse(isUserLogined) : false,
   database: [
     {
-      login: 'admin',
-      password: '12345'
-    }
-  ]
+      login: "admin",
+      password: "12345",
+    },
+  ],
 };
 
 export const getData = createAsyncThunk(
@@ -45,11 +45,11 @@ export const dataSlice = createSlice({
       state.start += 5;
     },
     setIsLoginedTrue(state) {
-      state.isLogined = true
+      state.isLogined = true;
       localStorage.setItem("isLogined", "true");
     },
     setIsLoginedFalse(state) {
-      state.isLogined = false
+      state.isLogined = false;
       localStorage.setItem("isLogined", "false");
     },
   },
