@@ -9,7 +9,7 @@ export const dataApi = createApi({
   refetchOnFocus: true,
   endpoints: (build) => ({
     getData: build.query<IPost[], IQueries>({
-      query: ({limit, start}) => ({
+      query: ({ limit, start }) => ({
         url: `posts`,
         params: {
           _start: start,

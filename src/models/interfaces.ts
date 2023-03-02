@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface IPost {
   userId: number;
   id: number;
@@ -6,6 +8,19 @@ export interface IPost {
 }
 
 export interface IQueries {
-  limit: number,
-  start: number
+  limit: number;
+  start: number;
+}
+
+export interface IDataState {
+  stateData: IPost[];
+  start: number;
+  isLoading: boolean;
+  isAuthenticated: boolean;
+  user: null;
+}
+
+export interface IModalProps {
+  isModalOpen: boolean;
+  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 }

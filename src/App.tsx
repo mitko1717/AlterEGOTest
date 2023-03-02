@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Profile from "./pages/Profile";
 import News from "./pages/News";
 import Main from "./pages/Main";
+import ModalForm from "./components/ModalLogin";
 
 function App() {
   return (

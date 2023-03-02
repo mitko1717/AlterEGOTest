@@ -1,49 +1,48 @@
 import { useState, useEffect } from "react";
-import { useGetDataQuery } from "../store/data/data.api";
-import { useActions } from "../hooks/actions";
 import { useAppSelector } from "../hooks/redux";
 import Button from "@mui/material/Button";
-import CircularProgress from '@mui/material/CircularProgress';
+import CircularProgress from "@mui/material/CircularProgress";
 import Layout from "../components/Layout";
+import { getData } from "../store/data/data.slice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../store";
+import { useActions } from "../hooks/actions";
 
 const News = () => {
-  const [limit, setLimit] = useState<number>(5);
-  const [start, setStart] = useState<number>(0);
-  const { isLoading, isError, data } = useGetDataQuery({limit, start});
+  const limit = 5;
+  const { setStart } = useActions();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const { stateData } = useAppSelector((state) => state.data);
-  const { setData } = useActions();
+  const { stateData, start, isLoading } = useAppSelector((state) => state.data);
 
-  const loadMoreHandler = () => {
-    setLimit(limit + 5)
-    setStart(start + 5)
-    // const [trigger, result] = useGetDataQuery({limit, start});
-    // trigger();
-    // console.log('data', result.data);
-    
-    if(data && data?.length > 0) {
-      let concatData = stateData.concat(data);
-      console.log(concatData);
-      
-      // setData(stateData, ...data)
-    }
-  }
+  const loadMoreHandler = async () => {
+    setStart();
+    dispatch(getData({ start, limit }));
+  };
 
   useEffect(() => {
-    if (data && stateData.length === 0) setData(data);
-  }, [data]);
+    loadMoreHandler();
+  }, []);
 
   return (
     <Layout>
       <div>
         <div className="flex justify-center mx-auto my-2 w-36">
-          <Button variant="contained">LOAD MORE</Button>
+          <Button variant="contained" onClick={loadMoreHandler}>
+            LOAD MORE
+          </Button>
         </div>
 
-        {isError && <div className="w-36 mx-auto flex justify-center mt-6">couldn't load data</div>}
-        {isLoading && <div className="w-36 mx-auto flex justify-center mt-6"><CircularProgress /></div>}
-
-        {stateData && stateData?.length > 0 && <div className="w-36 mx-auto text-center font-bold py-2">Posts count: {stateData.length}</div>}
+        {isLoading && (
+          <div className="w-36 mx-auto flex justify-center mt-6">
+            <CircularProgress />
+          </div>
+        )}
+        {stateData && stateData?.length > 0 && (
+          <div className="w-36 mx-auto text-center font-bold py-2">
+            Posts count: {stateData.length}
+          </div>
+        )}
 
         <div className="flex w-full h-[80vh] flex-col overflow-y-scroll py-2">
           {stateData &&
