@@ -1,17 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import ModalForm from "./ModalLogin";
+import { useAppSelector } from "../hooks/redux";
 
 type Props = {
   children: JSX.Element;
 };
 
 const Layout = ({ children }: Props) => {
+  const { isLogined } = useAppSelector((state) => state.data);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate()
 
   const modalOpenHandler = () => {
-    setIsModalOpen(true);
+    if (!isLogined) setIsModalOpen(true);
+    if (isLogined) navigate('/profile')
   };
 
   return (
@@ -24,12 +28,11 @@ const Layout = ({ children }: Props) => {
           <Link to="/news">News</Link>
         </Button>
         <Button variant="contained" onClick={modalOpenHandler}>
-          {/* <Link to="/profile">Profile</Link> */}
           Profile
         </Button>
       </div>
 
-      <ModalForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      {!isLogined && <ModalForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
 
       {children}
     </div>

@@ -1,12 +1,16 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IDataState, IPost, IQueries } from "../../models/interfaces";
 
+const isUserLogined =
+  typeof window !== "undefined" && localStorage.getItem("isLogined") !== null
+    ? JSON.parse(localStorage.getItem("isLogined") || '')
+    : null;    
+
 const initialState: IDataState = {
   stateData: [],
   start: 0,
   isLoading: true,
-  isAuthenticated: false,
-  isLogined: false,
+  isLogined: isUserLogined !== null ? JSON.parse(isUserLogined) : false,
   database: [
     {
       login: 'admin',
@@ -42,9 +46,11 @@ export const dataSlice = createSlice({
     },
     setIsLoginedTrue(state) {
       state.isLogined = true
+      localStorage.setItem("isLogined", "true");
     },
     setIsLoginedFalse(state) {
       state.isLogined = false
+      localStorage.setItem("isLogined", "false");
     },
   },
 

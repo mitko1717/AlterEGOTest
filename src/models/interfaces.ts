@@ -21,7 +21,6 @@ export interface IDataState {
   stateData: IPost[];
   start: number;
   isLoading: boolean;
-  isAuthenticated: boolean;
   isLogined: boolean;
   database: IUsersInfo[];
 }

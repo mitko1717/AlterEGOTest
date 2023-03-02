@@ -7,7 +7,6 @@ const Profile = () => {
   const { setIsLoginedFalse } = useActions();
   const navigate = useNavigate();
 
-
   const logoutHandler = () => {
     setIsLoginedFalse()
     navigate('/')
