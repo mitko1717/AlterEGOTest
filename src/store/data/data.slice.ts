@@ -1,4 +1,8 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  createAsyncThunk,
+  createSlice,
+  PayloadAction,
+} from "@reduxjs/toolkit";
 import { IDataState, IPost, IQueries } from "../../models/interfaces";
 
 const isUserLogined =
@@ -6,11 +10,27 @@ const isUserLogined =
     ? JSON.parse(localStorage.getItem("isLogined") || "")
     : null;
 
+// const loadedData =
+// typeof window !== "undefined" && localStorage.getItem("loadedData") !== null
+//   ? JSON.parse(localStorage.getItem("loadedData") || "")
+//   : null;
+
+//   const startCount =
+//   typeof window !== "undefined" && localStorage.getItem("startCount") !== null
+//     ? JSON.parse(localStorage.getItem("startCount") || "")
+//     : null;
+
 const initialState: IDataState = {
+  // stateData: loadedData !== null ? loadedData : [],
   stateData: [],
+  // start: startCount !== null ? startCount : 0,
   start: 0,
   isLoading: true,
   isLogined: isUserLogined !== null ? JSON.parse(isUserLogined) : false,
+  lngs: {
+    en: { nativeName: "English" },
+    uk: { nativeName: "Ukrainian" },
+  },
   database: [
     {
       login: "admin",
@@ -43,6 +63,7 @@ export const dataSlice = createSlice({
     },
     setStart(state) {
       state.start += 5;
+      // localStorage.setItem("startCount", JSON.stringify(state.start));
     },
     setIsLoginedTrue(state) {
       state.isLogined = true;
@@ -60,8 +81,13 @@ export const dataSlice = createSlice({
       (state, action: PayloadAction<IPost[]>) => {
         if (state.stateData.length === 0) state.stateData = action.payload;
 
-        if (!state.stateData.find((obj) => obj.id === action.payload[0].id)) {
+        let existingObj = state.stateData.find(
+          (obj) => obj.id === action.payload[0].id
+        );
+
+        if (!existingObj) {
           state.stateData = state.stateData.concat(action.payload);
+          // localStorage.setItem("loadedData", JSON.stringify(state.stateData.concat(action.payload)));
         }
         state.isLoading = false;
       }

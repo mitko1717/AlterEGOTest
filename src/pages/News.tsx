@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useAppSelector } from "../hooks/redux";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -7,11 +7,13 @@ import { getData } from "../store/data/data.slice";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store";
 import { useActions } from "../hooks/actions";
+import { useTranslation } from "react-i18next";
 
 const News = () => {
-  const limit = 5;
   const { setStart } = useActions();
+  const limit = 5;
   const dispatch = useDispatch<AppDispatch>();
+  const { t, i18n } = useTranslation();
 
   const { stateData, start, isLoading } = useAppSelector((state) => state.data);
 
@@ -21,7 +23,7 @@ const News = () => {
   };
 
   useEffect(() => {
-    loadMoreHandler();
+    dispatch(getData({ start, limit }));
   }, []);
 
   return (
@@ -29,7 +31,7 @@ const News = () => {
       <div>
         <div className="flex justify-center mx-auto my-2 w-36">
           <Button variant="contained" onClick={loadMoreHandler}>
-            LOAD MORE
+            {t('loadMore')}
           </Button>
         </div>
 
@@ -40,7 +42,7 @@ const News = () => {
         )}
         {stateData && stateData?.length > 0 && (
           <div className="w-36 mx-auto text-center font-bold py-2">
-            Posts count: {stateData.length}
+            <p>{t('postsCount')}:{stateData.length}</p>
           </div>
         )}
 

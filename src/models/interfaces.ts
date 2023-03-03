@@ -23,9 +23,18 @@ export interface IDataState {
   isLoading: boolean;
   isLogined: boolean;
   database: IUsersInfo[];
+  lngs: ILanguages;
 }
 
 export interface IModalProps {
   isModalOpen: boolean;
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+export interface ILanguage {
+  nativeName: string;
+}
+
+export interface ILanguages {
+  [key: string]: ILanguage
 }
