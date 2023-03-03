@@ -36,5 +36,5 @@ export interface ILanguage {
 }
 
 export interface ILanguages {
-  [key: string]: ILanguage
+  [key: string]: ILanguage;
 }
